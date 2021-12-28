@@ -1,0 +1,148 @@
+@import url('https://fonts.google.com/specimen/Josefin+Sans');
+:root{
+    --Check-Background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+    --Bright-Blue: hsl(220, 98%, 61%);
+    --Very-Light-Gray: hsl(0, 0%, 98%);
+    --Very-Light-Grayish-Blue: hsl(236, 33%, 92%);
+    --Light-Grayish-Blue: hsl(233, 11%, 84%);
+    --Dark-Grayish-Blue: hsl(236, 9%, 61%);
+    --Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
+    --Very-Dark-Blue: hsl(235, 21%, 11%);
+    --Very-Dark-Desaturated-Blue: hsl(235, 24%, 19%);
+    --Light-Grayish-Blue: hsl(234, 39%, 85%);
+    --Light-Grayish-Blue-Hover: hsl(236, 33%, 92%);
+    --Dark-Grayish-Blue: hsl(234, 11%, 52%);
+    --Very-Dark-Grayish-Blue: hsl(233, 14%, 35%);
+    --Very-Dark-Grayish-Blue: hsl(237, 14%, 26%);
+    --Josefin: 'Josefin Sans', sans-serif;
+}
+body{
+    background-color: var(--Very-Dark-Blue);
+    color: var(--Very-Light-Gray);
+}
+.bg-header{
+    height: 40vh;
+    background: url('./images/bg-desktop-dark.jpg')  no-repeat center;
+    background-size: cover;
+}
+
+.header-container{
+    height: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title{
+    display: flex;
+    justify-content: space-between;
+    color: var(--Light-Grayish-Blue);
+    font-size: 50px;
+    font-family: var(--Josefin);
+    font-weight: 700;
+}
+
+.forms-container{
+    background: linear-gradient(to left, var(--Very-Dark-Grayish-Blue), var(--Very-Dark-Desaturated-Blue));
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.forms-container form{
+    display: flex;
+    height: 30px;
+    align-items: center;
+    position: relative;
+}
+
+.forms-container input[type=text]{
+    font-size: 18px;
+    background-color: transparent;
+    border: 0px;
+    text-align: justify;
+    padding: 0px;
+    width: calc(100% - 10px);
+    margin-left: 10px;
+    color: var(--Light-Grayish-Blue);
+    outline-style: none;
+    font-family: var(--Josefin);
+}
+
+.check-todo{
+    display: block;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.check-todo input {
+    display: none;
+}
+
+.checkmark {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    border: 1px solid var(--Light-Grayish-Blue);
+    border-radius: 100%;
+}
+
+.check-todo:hover input ~ .checkmark {
+    border: 1px solid;
+    background-image: linear-gradient(to left, var(--Very-Dark-Desaturated-Blue), var(--Very-Dark-Desaturated-Blue)), radial-gradient(circle at top left, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+    border: solid 1px transparent;
+    border-radius: 100%;
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+  
+.check-todo input:checked ~ .checkmark {
+    background: var(--Check-Background);
+    border: solid 1px transparent;
+    border-radius: 100%;
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+  
+.checkmark:after {
+    content: "";
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    display: none;
+}
+  
+.check-todo input:checked ~ .checkmark:after {
+    display: block;
+}
+  
+.check-todo .checkmark:after {
+    left: 9px;
+    top: 4px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.attribution { 
+    font-family: var(--Josefin);
+    font-size: 11px; 
+    text-align: center; 
+}
+.attribution a { 
+    color: hsl(228, 45%, 44%); 
+}
