@@ -3,34 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="reset.css">
+  <script src="./index.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   <title>Frontend Mentor | Todo app</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
 </head>
 <body>
-
-  Todo
-
-  <!-- Add dynamic number --> items left
-
-  All
-  Active 
-  Completed
-
-  Clear Completed
-
-  Drag and drop to reorder list
-
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
+    <header>
+        <div class="bg-header">
+            <div class="header-container">
+                <div class="title">
+                    <h1>Todo</h1>
+                    <picture>
+                        <img src="./images/icon-sun.svg" alt="light-page">
+                    </picture>
+                </div>
+                <div class="forms-container">
+                    <form action="#">
+                        <label for="check-todo" class="check-todo">
+                            <input type="checkbox" name="create-check-todo" id="check-todo">
+                            <span class="checkmark"></span>
+                        </label>
+                        <input type="text" name="create-todo" placeholder="Create a new Todo...">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section>
+            <div>
+                <p>items left</p>
+                <div>
+                    <p>All</p>
+                    <p>Active</p>
+                    <p>Completed</p>
+                </div>
+                <p>Clear Completed</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Drag and drop to recorder list</p>
+        <div class="attribution">
+            Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+            Coded by <a href="#">Wesley Rabachini Ribeiro</a>.
+        </div>
+    </footer>
 </body>
 </html>
