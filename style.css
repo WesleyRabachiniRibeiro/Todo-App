@@ -1,11 +1,11 @@
+/* General Style */
 @import url('https://fonts.google.com/specimen/Josefin+Sans');
 :root{
     --Check-Background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
     --Bright-Blue: hsl(220, 98%, 61%);
     --Very-Light-Gray: hsl(0, 0%, 98%);
-    --Very-Light-Grayish-Blue: hsl(236, 33%, 92%);
-    --Light-Grayish-Blue: hsl(233, 11%, 84%);
-    --Dark-Grayish-Blue: hsl(236, 9%, 61%);
+    --Light-Grayish-Blue-light-theme: hsl(233, 11%, 84%);
+    --Dark-Grayish-Blue-light-theme: hsl(236, 9%, 61%);
     --Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
     --Very-Dark-Blue: hsl(235, 21%, 11%);
     --Very-Dark-Desaturated-Blue: hsl(235, 24%, 19%);
@@ -18,10 +18,15 @@
 }
 body{
     background-color: var(--Very-Dark-Blue);
-    color: var(--Very-Light-Gray);
+    color: var(--Light-Grayish-Blue);
+    font-size: 18px;
 }
+.active{
+    color: var(--Bright-Blue)!important;
+}
+/* Header Style */
 .bg-header{
-    height: 40vh;
+    height: 35vh;
     background: url('./images/bg-desktop-dark.jpg')  no-repeat center;
     background-size: cover;
 }
@@ -39,16 +44,19 @@ body{
     display: flex;
     justify-content: space-between;
     color: var(--Light-Grayish-Blue);
-    font-size: 50px;
+    font-size: 45px;
     font-family: var(--Josefin);
     font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 18px;
 }
 
 .forms-container{
-    background: linear-gradient(to left, var(--Very-Dark-Grayish-Blue), var(--Very-Dark-Desaturated-Blue));
+    background: var(--Very-Dark-Desaturated-Blue);
     border-radius: 5px;
     padding: 15px;
     margin-top: 20px;
+    box-shadow: 2px 4px 12px 0px #000;
 }
 
 .forms-container form{
@@ -59,7 +67,6 @@ body{
 }
 
 .forms-container input[type=text]{
-    font-size: 18px;
     background-color: transparent;
     border: 0px;
     text-align: justify;
@@ -70,7 +77,7 @@ body{
     outline-style: none;
     font-family: var(--Josefin);
 }
-
+/* Checkbox Style */
 .check-todo{
     display: block;
     padding-left: 35px;
@@ -138,11 +145,92 @@ body{
     transform: rotate(45deg);
 }
 
+/* Main Style*/
+.main-container{
+    position: relative;
+    min-height: 50vh;
+}
+.container{
+    max-width: 500px;
+    position: relative;
+    top: -30px;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    box-shadow: 0px 0px 15px 0px #000;
+}
+
+.container > .forms-container{
+    margin: 0;
+    border-radius: 5px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom: 1px solid var(--Very-Dark-Grayish-Blue);
+}
+
+.interactive-menu{
+    background: var(--Very-Dark-Desaturated-Blue);
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    font-size: 14px;
+    max-width: 470px;
+    border-radius: 5px;
+}
+
+.interactive-menu p{
+    cursor: pointer;
+}
+
+.interactive-menu > p:first-child{
+    cursor: default;
+}
+
+.interactive-menu > p:first-child:hover{
+    color: inherit;
+}
+
+.interactive-menu p:hover{
+    color: var(--Light-Grayish-Blue-Hover);
+}
+
+.interactive-menu__div{
+    display: flex;
+}
+
+.interactive-menu__div p:nth-child(2){
+    margin: 0 10px 0 10px;
+}
+
+div + .interactive-menu{
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+/* Footer Style */
+.footer-container{
+    height: 10vh;
+}
+
+.credits{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.credits > p{
+    font-size: 14px;
+    color: var(--Dark-Grayish-Blue);
+}
+
 .attribution { 
     font-family: var(--Josefin);
     font-size: 11px; 
     text-align: center; 
 }
+
 .attribution a { 
     color: hsl(228, 45%, 44%); 
 }
