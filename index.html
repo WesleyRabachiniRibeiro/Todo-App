@@ -6,8 +6,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="reset.css">
-  <script src="./index.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous" defer></script>
+  <script src="./index.js" defer></script>
   <title>Frontend Mentor | Todo app</title>
 </head>
 <body>
@@ -17,7 +17,7 @@
                 <div class="title">
                     <h1>Todo</h1>
                     <picture>
-                        <img src="./images/icon-sun.svg" alt="light-page">
+                        <img src="./images/icon-sun.svg" alt="light-page" id="sun">
                     </picture>
                 </div>
                 <div class="forms-container">
@@ -26,7 +26,7 @@
                             <input type="checkbox" name="create-check-todo" id="check-todo">
                             <span class="checkmark"></span>
                         </label>
-                        <input type="text" name="create-todo" placeholder="Create a new Todo...">
+                        <input type="text" name="create-todo" class="txtInput" placeholder="Create a new Todo...">
                     </form>
                 </div>
             </div>
@@ -34,7 +34,7 @@
     </header>
     <main class="main-container">
         <section class="container">
-            <div class="interactive-menu">
+            <div class="interactive-menu" id="menu">
                 <p>0 items left</p>
                 <div class="interactive-menu__div">
                     <p>All</p>

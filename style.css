@@ -3,17 +3,19 @@
 :root{
     --Check-Background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
     --Bright-Blue: hsl(220, 98%, 61%);
+
     --Very-Light-Gray: hsl(0, 0%, 98%);
     --Light-Grayish-Blue-light-theme: hsl(233, 11%, 84%);
     --Dark-Grayish-Blue-light-theme: hsl(236, 9%, 61%);
-    --Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
+    --Very-Dark-Grayish-Blue-light-theme: hsl(235, 19%, 35%);
+    
     --Very-Dark-Blue: hsl(235, 21%, 11%);
     --Very-Dark-Desaturated-Blue: hsl(235, 24%, 19%);
     --Light-Grayish-Blue: hsl(234, 39%, 85%);
     --Light-Grayish-Blue-Hover: hsl(236, 33%, 92%);
     --Dark-Grayish-Blue: hsl(234, 11%, 52%);
-    --Very-Dark-Grayish-Blue: hsl(233, 14%, 35%);
-    --Very-Dark-Grayish-Blue: hsl(237, 14%, 26%);
+    --Very-Dark-Grayish-Blue-dark-theme: hsl(233, 14%, 35%);
+    --Very-Dark-Grayish-Blue-dark-theme: hsl(237, 14%, 26%);
     --Josefin: 'Josefin Sans', sans-serif;
 }
 body{
@@ -66,7 +68,7 @@ body{
     position: relative;
 }
 
-.forms-container input[type=text]{
+.forms-container .txtInput{
     background-color: transparent;
     border: 0px;
     text-align: justify;
@@ -104,13 +106,16 @@ body{
     border-radius: 100%;
 }
 
-.check-todo:hover input ~ .checkmark {
+.check-todo:hover input ~ .checkmark{
     border: 1px solid;
     background-image: linear-gradient(to left, var(--Very-Dark-Desaturated-Blue), var(--Very-Dark-Desaturated-Blue)), radial-gradient(circle at top left, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
     border: solid 1px transparent;
     border-radius: 100%;
     background-origin: border-box;
     background-clip: content-box, border-box;
+}
+.check-todo:hover input ~ .checkmarkLight{
+    background-image: linear-gradient(to left, var(--Very-Light-Gray), var(--Very-Light-Gray)), radial-gradient(circle at top left, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
 }
   
 .check-todo input:checked ~ .checkmark {
@@ -165,33 +170,44 @@ body{
     border-radius: 5px;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
-    border-bottom: 1px solid var(--Very-Dark-Grayish-Blue);
+    border-bottom: 1px solid var(--Very-Dark-Grayish-Blue-dark-theme);
 }
 
-.interactive-menu{
+.interactive-menu, .light-interactive-menu{
     background: var(--Very-Dark-Desaturated-Blue);
+    font-family: var(--Josefin);
+    font-weight: 700;
     display: flex;
     justify-content: space-between;
     padding: 15px;
-    font-size: 14px;
+    font-size: 12px;
     max-width: 470px;
     border-radius: 5px;
 }
 
-.interactive-menu p{
+.light-interactive-menu{
+    background: var(--Very-Light-Gray)!important; 
+    color: var(--Dark-Grayish-Blue-light-theme)!important;
+}
+
+.interactive-menu p, .light-interactive-menu p{
     cursor: pointer;
 }
 
-.interactive-menu > p:first-child{
+.interactive-menu > p:first-child, .light-interactive-menu > p:first-child{
     cursor: default;
 }
 
-.interactive-menu > p:first-child:hover{
-    color: inherit;
+.interactive-menu > p:first-child:hover, .light-interactive-menu > p:first-child:hover{
+    color: inherit!important;
 }
 
 .interactive-menu p:hover{
     color: var(--Light-Grayish-Blue-Hover);
+}
+
+.light-interactive-menu p:hover{
+    color: var(--Very-Dark-Grayish-Blue-light-theme)!important;
 }
 
 .interactive-menu__div{
