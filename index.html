@@ -21,27 +21,27 @@
                     </picture>
                 </div>
                 <div class="forms-container">
-                    <form action="#">
+                    <form id='newTodo'>
                         <label for="check-todo" class="check-todo">
                             <input type="checkbox" name="create-check-todo" id="check-todo">
                             <span class="checkmark"></span>
                         </label>
-                        <input type="text" name="create-todo" class="txtInput" placeholder="Create a new Todo...">
+                        <input type="text" name="create-todo" class="txtInput" id="txtNewTodo" placeholder="Create a new Todo..." autocomplete="off">
                     </form>
                 </div>
             </div>
         </div>
     </header>
     <main class="main-container">
-        <section class="container">
+        <section class="container" id="container">
             <div class="interactive-menu" id="menu">
-                <p>0 items left</p>
+                <p id="items">0 items left</p>
                 <div class="interactive-menu__div">
-                    <p>All</p>
-                    <p>Active</p>
-                    <p>Completed</p>
+                    <p id="all">All</p>
+                    <p id="active">Active</p>
+                    <p id="completed">Completed</p>
                 </div>
-                <p>Clear Completed</p>
+                <p id="clear">Clear Completed</p>
             </div>
         </section>
     </main>
