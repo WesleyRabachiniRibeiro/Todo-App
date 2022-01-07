@@ -290,6 +290,9 @@ body{
 
 /*Changes for Mobile */
 @media(max-width: 500px){
+    .bg-header{
+        height:240px;
+    }
     .header-container{
         width: 80%;
         margin: 0 auto;
