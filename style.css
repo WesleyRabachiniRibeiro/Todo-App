@@ -304,7 +304,7 @@ body{
     }
 
     .light-bg{
-        background: url('./images/bg-mobile-light.jpg') no-repeat !important;
+        background: url('./images/bg-mobile-light.jpg') no-repeat;
         background-size: cover;
     }
     .header-container .forms-container{
@@ -314,6 +314,9 @@ body{
     .title{
         font-size: 30px;
         letter-spacing: 8px;
+    }
+    .main-container{
+        min-height: 45vh;
     }
     .container{
         width: 80%;
