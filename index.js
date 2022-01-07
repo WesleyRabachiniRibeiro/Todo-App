@@ -1,8 +1,30 @@
+// this function is for underline the complete items
+const lineThrough = (event) => {
+    let id = event.target.id
+    event.target.checked ? 
+    $(`#txtTodo${id.replace(/[^0-9]/g,'')}`).addClass('txtline') : $(`#txtTodo${id.replace(/[^0-9]/g,'')}`).removeClass('txtline')
+    Items()
+}
+
+// this function is the counter
+const Items = () => {
+    const item = $('#items')
+    let itemNumber = item.text().replace(/[0-9]/g, $('.all-check-todo').not(":checked").length)
+    item.text(itemNumber)
+}
+
+// this function delete the only item
+const deleteOnly = (event) => {
+    let idNumber = event.target.id.replace(/[^0-9]/g,'')
+    $(`#form${idNumber}`).remove()
+    Items();
+}
+
+// Change theme function
 $('#sun').click(() =>{
      if($('#sun').attr('src') == './images/icon-sun.svg'){
         $('#sun').attr('src', './images/icon-moon.svg');
-        $('.bg-header').css('background', 'url(./images/bg-desktop-light.jpg) no-repeat center');
-        $('.bg-header').css('background-size', 'cover');
+        $('.bg-header').addClass('light-bg');
         $('body').css('background-color', 'var(--Light-Grayish-Blue-light-theme)');
         $('.attribution').css('color', 'var(--Dark-Grayish-Blue)');
         $('.forms-container').addClass(`light-forms`);
@@ -11,8 +33,7 @@ $('#sun').click(() =>{
         $('.checkmark').addClass('checkmarkLight');
      }else{
         $('#sun').attr('src', './images/icon-sun.svg');
-        $('.bg-header').css('background', 'url(./images/bg-desktop-dark.jpg) no-repeat center');
-        $('.bg-header').css('background-size', 'cover');
+        $('.bg-header').removeClass('light-bg');
         $('body').css('background-color', 'var(--Very-Dark-Blue)');
         $('.attribution').css('color', 'white');
         $('.forms-container').removeClass(`light-forms`);
@@ -22,6 +43,7 @@ $('#sun').click(() =>{
      }
 })
 
+// create a new Todo
 $('#newTodo').submit((event) => {
     event.preventDefault()
     let idNumber = 1;
@@ -29,40 +51,29 @@ $('#newTodo').submit((event) => {
         idNumber = idNumber + 1;
     }
     let isMoon = $('#sun').attr('src') == './images/icon-moon.svg';
-    let isChecked = false;
-    if($('#check-todo').is(':checked')){
-        isChecked = true;
-    }
     let txtTodo = $('#txtNewTodo').val().trim()
     if(txtTodo != ''){
-        $('#container').prepend(`
-        <div class= "forms-container ${isMoon ? "light-forms" : ""}" id="form${idNumber}">
+        $('#dragzone').prepend(`
+        <div class= "forms-container ${isMoon ? "light-forms" : ""}" id="form${idNumber}" onclick="manageCheck()">
             <form>
                 <label for="check-todo${idNumber}" class="check-todo"> 
-                    <input type="checkbox" name="create-check-todo" class="all-check-todo" id="check-todo${idNumber}" ${isChecked ? 'checked' : ""} onclick="lineThrough(event)">
+                    <input type="checkbox" name="create-check-todo" class="all-check-todo" id="check-todo${idNumber}" onclick="lineThrough(event)">
                     <span class="checkmark ${isMoon ? "checkmarkLight" : ""}"></span>
                 </label>
-                <input type="text" name="create-todo" class="txtInput ${isChecked ? 'txtline' : ""}" id='txtTodo${idNumber}' placeholder="Create a new Todo..." value="${txtTodo}" readonly>
+                <p class="txtInput" id='txtTodo${idNumber}'>${txtTodo}</p>
+                <picture>
+                    <img src='./images/icon-cross.svg' alt='X' class="todo-cross" id="clear-todo${idNumber}" onclick="deleteOnly(event)"/>
+                </picture>
             </form>
         </div>
         `)
     }
+    if(!$('#menu').hasClass('border-top-0')) $('#menu').addClass('border-top-0') 
+    $('#txtNewTodo').val('')
     Items();
 })
 
-const lineThrough = (event) => {
-    let id = event.target.id
-    event.target.checked ? 
-    $(`#txtTodo${id.replace(/[^0-9]/g,'')}`).addClass('txtline') : $(`#txtTodo${id.replace(/[^0-9]/g,'')}`).removeClass('txtline')
-    Items()
-}
-
-const Items = () => {
-    const item = $('#items')
-    let itemNumber = item.text().replace(/[0-9]/g, $('.all-check-todo').not(":checked").length)
-    item.text(itemNumber)
-}
-
+// clear all completed Todos 
 $('#clear').click( () => {
     $('.all-check-todo').each( (index, element) => {
         if(element.checked){
@@ -72,6 +83,7 @@ $('#clear').click( () => {
     })
 })
 
+// view all todos
 $('#all').click( () => {
     $('.all-check-todo').each( (index, element) => {
         let idNumber = element.id.replace(/[^0-9]/g,'')
@@ -79,13 +91,15 @@ $('#all').click( () => {
             let idNumber = element.id.replace(/[^0-9]/g,'')
             $(`#form${idNumber}`).removeClass('d-none')
         }
-        $('#all').addClass('active')
-        $('#active').removeClass('active')
-        $('#completed').removeClass('active')
     })
+    $('#all').addClass('active')
+    $('#active').removeClass('active')
+    $('#completed').removeClass('active')
 })
 
-$('#active').click( () => {
+// view just actived todos
+$('#active').click( 
+    () => {
     $('.all-check-todo').each( (index, element) => {
         let idNumber = element.id.replace(/[^0-9]/g,'')
         if(element.checked){
@@ -93,12 +107,13 @@ $('#active').click( () => {
         }else{
             $(`#form${idNumber}`).removeClass('d-none')
         }
-        $('#all').removeClass('active')
-        $('#active').addClass('active')
-        $('#completed').removeClass('active')
     })
+    $('#all').removeClass('active')
+    $('#active').addClass('active')
+    $('#completed').removeClass('active')
 })
 
+// view just completed todos
 $('#completed').click( () => {
     $('.all-check-todo').each( (index, element) => {
         let idNumber = element.id.replace(/[^0-9]/g,'')
@@ -107,8 +122,25 @@ $('#completed').click( () => {
         }else{
             $(`#form${idNumber}`).removeClass('d-none')
         }
-        $('#all').removeClass('active')
-        $('#active').removeClass('active')
-        $('#completed').addClass('active')
     })
+    $('#all').removeClass('active')
+    $('#active').removeClass('active')
+    $('#completed').addClass('active')
+})
+
+// manage the todo change when completed or active are actived
+const manageCheck = () => {
+    $('.all-check-todo').each( (index, element) => {
+        let idNumber = element.id.replace(/[^0-9]/g,'')
+        if(element.checked == false && $('#completed').hasClass('active')){
+            $(`#form${idNumber}`).addClass('d-none')
+        }else if(element.checked && $('#active').hasClass('active')){
+            $(`#form${idNumber}`).addClass('d-none')
+        }
+    })
+}
+
+// Drag and Drop
+$('#dragzone').sortable({
+    cursor: 'move'
 })

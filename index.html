@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="reset.css">
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous" defer></script>
+  <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js" integrity="sha256-xH4q8N0pEzrZMaRmd7gQVcTZiFei+HfRTBPJ1OGXC0k=" crossorigin="anonymous" defer></script>
   <script src="./index.js" defer></script>
   <title>Frontend Mentor | Todo app</title>
 </head>
@@ -23,7 +24,7 @@
                 <div class="forms-container">
                     <form id='newTodo'>
                         <label for="check-todo" class="check-todo">
-                            <input type="checkbox" name="create-check-todo" id="check-todo">
+                            <input type="checkbox" name="create-check-todo" id="check-todo" readonly>
                             <span class="checkmark"></span>
                         </label>
                         <input type="text" name="create-todo" class="txtInput" id="txtNewTodo" placeholder="Create a new Todo..." autocomplete="off">
@@ -33,11 +34,12 @@
         </div>
     </header>
     <main class="main-container">
-        <section class="container" id="container">
+        <section class="container" >
+            <div class="dragzone" id="dragzone"></div>
             <div class="interactive-menu" id="menu">
                 <p id="items">0 items left</p>
                 <div class="interactive-menu__div">
-                    <p id="all">All</p>
+                    <p id="all" class="active">All</p>
                     <p id="active">Active</p>
                     <p id="completed">Completed</p>
                 </div>
